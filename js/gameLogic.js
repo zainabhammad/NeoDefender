@@ -82,7 +82,7 @@ function loseShield() {
   updateShields();
 }
 
-// Game Timer and Speed Multiplier
+// Game Timer and Speed Multiplierbbbb
 function startTimer() {
   timerInterval = setInterval(() => {
     timer--;
