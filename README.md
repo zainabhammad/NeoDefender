@@ -27,7 +27,6 @@ I created this game because I was inspired by The Matrix series and wanted to br
 - **CSS3**: Styling and layout.
 - **JavaScript**: Game logic and interactivity.
 
-
 ## Next Steps: 
 - Add Matrix-themed background
 - Create a level-up system
