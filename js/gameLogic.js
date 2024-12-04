@@ -1,175 +1,177 @@
 /*-------------- Constants -------------*/
-const gameZone = document.getElementById('gameZoneDisplay')
-gameZone.width = window.innerWidth
-gameZone.height = window.innerHeight
+const gameZone = document.getElementById('gameZoneDisplay') 
+gameZone.width = window.innerWidth //game display will be the width of the entire screen 
+gameZone.height = window.innerHeight //game game display will be take over the height of the entire screen 
 
-const speedGamePercent = 0.09  
-const objectTypes = ['red-pill', 'blue-pill']; // Types of objects in the game
-const speedMultiplier = 0.05; // Speed increase per second
+const speedIncrease= 0.04
+const pillTypes = ['red-pill', 'blue-pill'] 
 /*---------- Variables (state) ---------*/
-let objects = [];
-let score = 0; 
-let shieldCount = 5;
-let timer = 60;
-let timeElapsed = 0;  
-let gameInterval, timerInterval;
+let pills = []
+let score = 0 
+let shieldCount = 5
+let timer = 60
+let timeElapsed = 0  //this will track the time passed since the game started 
+let gameLoop // help updating the game state  
+let countdownTimer
 /*----- Cached Element References  -----*/
-const gameZoneContext = gameZone.getContext("2d"); // Get the 2D context of the canvas for drawing
+const gameZoneContext = gameZone.getContext("2d"); // where we gonna "draw" on the canvas the gamezone 
 const timerDisplay = document.getElementById('timer');
-const scoreContainer = document.querySelector('.scoreAndTimeDisplay');
+const scoreAndTimeDisplay = document.querySelector('.scoreAndTimeDisplay');
 const shieldContainer = document.querySelector('.shieldsDisplay');
 const playAgainButton = document.getElementById('playAgainButton');
 const result = document.getElementById('result');
-const coverScreen = document.querySelector('.endGameDisplay');
+const endGameDisplay = document.querySelector('.endGameDisplay');
+const shields = document.querySelectorAll('.shield');
 /*-------------- Functions -------------*/
-// A Function to Generate Random Numbers
 const generateRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-// Falling pills Constructor
-function FallingObject(type, x, y, size) {
-  this.type = type;
-  this.x = x;
-  this.y = y;
-  this.size = size * 2;
-  this.baseSpeed = generateRandomNumber(2, 5);
-  this.speed = this.baseSpeed;
+function FallingPill(type, x, y, size) {
 
-  const img = new Image();
-  img.src = this.type === "red-pill" ? "./image/red-pill.png" : "./image/blue-pill.png";
+  //define the falling pill properties 
+  this.type = type //assign the type of pill if red or blue
+  this.x = x // where in the game display the pill will be start horizontally   
+  this.y = y //where in the game display the pill will start vertically    
+  this.size = size * 2; //addded it to make the pill size bigger to the game display
+  this.speedRange = generateRandomNumber(1, 5) // range of how fast the pill will fall
+  this.speed = this.speedRange  //current speed of pill 
 
-  // Update the speed over time
+  const pillImg = new Image()
+  if (this.type === "red-pill") {
+    pillImg.src = "./image/red-pill.png"
+  } else {
+    pillImg.src = "./image/blue-pill.png"
+  }
+  
   this.updateSpeed = () => {
-    this.speed = this.baseSpeed + timeElapsed * speedMultiplier;
-  };
+    this.speed = this.speedRange + timeElapsed * speedIncrease //updates and increase of speed over time 
+  }
 
-  // Update object position
   this.update = () => {
     this.updateSpeed();
-    this.y += this.speed;
-  };
+    this.y = this.y + this.speed;  
+  }
 
-  // Draw the object on the canvas
+  //draw the pill into the game zone, horizantal and vertically 
   this.draw = () => {
-    gameZoneContext.drawImage(img, this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+    gameZoneContext.drawImage(pillImg, this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
   };
 }
 
-// Create Falling pills
-function createObject() {
-  const x = generateRandomNumber(50, gameZone.width - 50);
-  const y = 0;
-  const size = generateRandomNumber(60, 80);
+// Create falling pill at random properties then add it to the pills array 
+function createPill() {
+  const x = generateRandomNumber(50, gameZone.width - 50)//make the pill random placed in the game zone
+  const y = 0 // start game from top of the game zone screen 
+  const size = generateRandomNumber(60, 80)
 
-  objects.push(new FallingObject(objectTypes[generateRandomNumber(0, 1)], x, y, size));
+  pills.push(new FallingPill(pillTypes[generateRandomNumber(0, 1)], x, y, size)) //passes the permeters to the fallingpill 
 }
 
 
-// Update Shield Icons
+//displaying shields 
 function updateShields() {
-  const shieldIcons = document.querySelectorAll('.shield');
-  shieldIcons.forEach((icon, index) => {
-    icon.style.display = index < shieldCount ? "inline-block" : "none";
-  });
-
+  for (let i = 0; i < shields.length; i++) {
+    if (i < shieldCount) {
+      shields[i].style.display = "inline-block"
+    } else {
+      shields[i].style.display = "none"
+    }
+  }
   if (shieldCount <= 0) {
-    endGame("You lost all shields! The Matrix has collapsed....");
+    endGame("You lost all shields! The Matrix has collapsed....")
   }
 }
 
-// Reduce Shields
+// player loses the shield, decrease the shield count 
 function loseShield() {
-  shieldCount--;
-  updateShields();
+  shieldCount = shieldCount -1;
+  updateShields(); //once it decreases, run updateshield to update game zone 
 }
 
-// Game Timer and Speed Multiplierbbbb
-function startTimer() {
-  timerInterval = setInterval(() => {
-    timer--;
-    timeElapsed++;
-    timerDisplay.textContent = timer;
+// 
+
+//
+function countDown() {
+  countdownTimer = setInterval(() => {
+    timer--
+    timerDisplay.innerHTML = timer;
+    timeElapsed++; 
     if (timer <= 0) endGame("Congrats! You saved The Matrix");
   }, 1000);
 }
 
-// Update Game State
 function updateGame() {
-  gameZoneContext.clearRect(0, 0, gameZone.width, gameZone.height); // Clear the canvas
-  gameZoneContext.fillStyle = "black"; // Set the background to black
-  gameZoneContext.fillRect(0, 0, gameZone.width, gameZone.height); // Draw the black background
+  gameZoneContext.clearRect(0, 0, gameZone.width, gameZone.height)
+  gameZoneContext.fillStyle = "black"; 
+  gameZoneContext.fillRect(0, 0, gameZone.width, gameZone.height)
 
-  objects.forEach((obj, index) => {
-    obj.update();
-    obj.draw();
-    if (obj.y > gameZone.height && obj.type === "blue-pill") {
+  pills.forEach((pill, index) => {
+    pill.update();
+    pill.draw();
+    if (pill.y > gameZone.height && pill.type === "blue-pill") {
       loseShield();
-      objects.splice(index, 1);
+      pills.splice(index, 1)
     }
   });
 
-  if (Math.random() < 0.05) createObject();
+  if (Math.random() < 0.05) createPill()
 }
 
-// Update Score
-function updateScore() {
-  scoreContainer.textContent = `Score: ${score} | Time: ${timer}s`;
+function updateScoreAndTime() {
+  scoreAndTimeDisplay.textContent = `Score: ${score} | Time: ${timer}s`
 }
 
-// Start Game
 function startGame() {
   score = 0;
-  shieldCount = 5;
-  timer = 60;
-  objects = [];
-  timerDisplay.textContent = timer;
-  updateScore();
-  updateShields();
-  coverScreen.classList.add("hide");
-  playAgainButton.style.display = "none"; // Hide the button
-  scoreContainer.classList.remove("hide");
-  shieldContainer.classList.remove("hide");
-  gameInterval = setInterval(updateGame, 1000 / 60);
-  startTimer();
+  shieldCount = 5
+  timer = 60
+  pills = []
+  timerDisplay.textContent = timer
+  updateScoreAndTime()
+  updateShields()
+  endGameDisplay.classList.add("hide")
+  playAgainButton.style.display = "none"
+  scoreAndTimeDisplay.classList.remove("hide")
+  shieldContainer.classList.remove("hide")
+  gameLoop = setInterval(updateGame, 1000 / 60)
+  countDown()
 }
 
-// End Game
-function endGame(message) {
-  clearInterval(gameInterval);
-  clearInterval(timerInterval);
+function endGame(resultMessage) {
+  clearInterval(gameLoop)
+  clearInterval(countdownTimer)
 
-  // Delay showing the end game screen to ensure the game stops first
   setTimeout(() => {
-    coverScreen.classList.remove("hide");
-    scoreContainer.classList.add("hide");
-    shieldContainer.classList.add("hide");
+    endGameDisplay.classList.remove("hide")
+    scoreAndTimeDisplay.classList.add("hide")
+    shieldContainer.classList.add("hide")
 
-    result.textContent = message;
-    playAgainButton.style.display = "block"; // Show the play again button
-  }, 300); // Adjust the delay if needed
-}
+    result.textContent = resultMessage
+    playAgainButton.style.display = "block"
+  }, 300)
+} //ends the game displaying the end screen and result
 
 /*----------- Event Listeners ----------*/
 gameZone.addEventListener("click", (e) => {
-  const mouseX = e.clientX;
-  const mouseY = e.clientY;
+  const mouseX = e.clientX
+  const mouseY = e.clientY
 
-  objects.forEach((obj, index) => {
-    const dist = Math.sqrt((mouseX - obj.x) ** 2 + (mouseY - obj.y) ** 2);
-    if (dist < obj.size / 2 && !obj.clicked) {
-      obj.clicked = true;
-      if (obj.type === "red-pill") {
-        loseShield();
+  pills.forEach((pill, index) => {
+    const dist = Math.sqrt((mouseX - pill.x) ** 2 + (mouseY - pill.y) ** 2);
+    if (dist < pill.size / 2 && !pill.clicked) {
+      pill.clicked = true
+      if (pill.type === "red-pill") {
+        loseShield()
       } else {
-        score++;
-        updateScore();
+        score++
+        updateScoreAndTime()
       }
-      objects.splice(index, 1);
+      pills.splice(index, 1)
     }
-  });
-});
-playAgainButton.addEventListener("click", startGame);
+  })
+}) //checks if its red or blue and updates accordingly 
+playAgainButton.addEventListener("click", startGame) //reset the game 
 
 window.onload = () => {
-  startGame();
-};
+  startGame()
+}
 
