@@ -2,7 +2,8 @@
 
 Welcome to **NeoDefender**, a game inspired by the movie *The Matrix*. In this game, you control Neo as he navigates through falling pills while trying to save the matrix as long as possible. The goal is to avoid "red pills" and catch "blue pills" to gain points, while managing shields and keeping an eye on the timer.
 
-The reason I choose to create the game is due the inspiration The Matrix series has over, and I wanted to bring that into reality as a game inspired by it. 
+I created this game because I was inspired by The Matrix series and wanted to bring its world to life through a fun game.
+
 ## Features
 - **Falling Objects**: Red and blue pills fall from the top of the screen, which players must interact with to gain or lose shields.
 - **Score Tracking**: Track your score, high score, and the time left in the game.
@@ -12,7 +13,7 @@ The reason I choose to create the game is due the inspiration The Matrix series 
 
 ## Click the link below to start playing NeoDefender: 
 
-- ---> https://zainabhammad.github.io/NeoDefender/ <---
+- https://zainabhammad.github.io/NeoDefender/
 
 ## How to Play
 
@@ -41,14 +42,14 @@ The reason I choose to create the game is due the inspiration The Matrix series 
 - Fruit Fall Game | Javascript Project Speed Coding
  ((Game Logic))https://youtu.be/HMaeisq_wpA?si=2SdoRCvhKlL8o0J8 
 - ChatGPT (Image Generator): https://chatgpt.com/g/g-pmuQfob8d-image-generator
-- ChatGPT: Used in several ways, such as, enhancing the story part text, and assisting in organizing and preparing the game logic. 
+- ChatGPT: Used in several ways, such as enhancing the story text and assisting in organizing and preparing the game logic.
 - Soundtrack:  https://youtu.be/GOVS6iCJ52s?si=QNUICVO_OsOhwLkk 
 
 ## Planning Tools
 - Trello https://trello.com/invite/b/67418deafbb00d565c6eb889/ATTI071f54e94ae076d11a4b6150b4fd9b5eDE13370E/neodefender   
-- ChatGPT 
+- ChatGPT: Helping me while creating the pseudocode.  
 
-
+## Game View
 ![Landing Page](image/landing-page.png)
 ![Game Mode](image/gameView.png)
 

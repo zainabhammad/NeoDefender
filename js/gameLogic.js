@@ -87,9 +87,7 @@ function loseShield() {
   updateShields(); //once it decreases, run updateshield to update game zone 
 }
 
-// 
 
-//
 function countDown() {
   countdownTimer = setInterval(() => {
     timer--
