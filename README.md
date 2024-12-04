@@ -9,25 +9,10 @@ The reason I choose to create the game is due the inspiration The Matrix series 
 - **Background Music**: Music plays throughout the game to enhance the experience.
 - **Shields**: Protect yourself from losing by collecting blue pills, but be careful not to click on red pills.
 
-## Installation
 
-To get started with NeoDefender, follow these steps:
+## Click the link below to start playing NeoDefender: 
 
-1. **Clone the repository**:
-
-    ```bash
-    git clone https://github.com/your-username/neodefender.git
-    ```
-
-2. **Open the project folder**:
-
-    ```bash
-    cd neodefender
-    ```
-
-3. **Open the index.html file in your browser**.
-
-    You can also host it locally using a simple HTTP server if you prefer.
+- ---> https://zainabhammad.github.io/NeoDefender/ <---
 
 ## How to Play
 
@@ -58,6 +43,10 @@ To get started with NeoDefender, follow these steps:
 - ChatGPT (Image Generator): https://chatgpt.com/g/g-pmuQfob8d-image-generator
 - ChatGPT: Used in several ways, such as, enhancing the story part text, and assisting in organizing and preparing the game logic. 
 - Soundtrack:  https://youtu.be/GOVS6iCJ52s?si=QNUICVO_OsOhwLkk 
+
+## Planning Tools
+- Trello https://trello.com/invite/b/67418deafbb00d565c6eb889/ATTI071f54e94ae076d11a4b6150b4fd9b5eDE13370E/neodefender   
+- ChatGPT 
 
 
 ![Landing Page](image/landing-page.png)

@@ -33,5 +33,5 @@ storyButtons.forEach((button) => {
 })
 
 document.querySelector(".startButton").addEventListener("click", function() {
-    window.location.href = "./game.html"// Redirect to game.html
+    window.location.href = "./game.html"
 })
