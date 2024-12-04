@@ -5,9 +5,8 @@ Welcome to **NeoDefender**, a game inspired by the movie *The Matrix*. In this g
 I created this game because I was inspired by The Matrix series and wanted to bring its world to life through a fun game.
 
 ## Features
-- **Falling Objects**: Red and blue pills fall from the top of the screen, which players must interact with to gain or lose shields.
+- **Falling Objects**: Red and blue pills fall from the top of the screen, which players must interact with to gain score or lose shields.
 - **Score Tracking**: Track your score, high score, and the time left in the game.
-- **Background Music**: Music plays throughout the game to enhance the experience.
 - **Shields**: Protect yourself from losing by collecting blue pills, but be careful not to click on red pills.
 
 
