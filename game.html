@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Defender Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <!--Display 1.1 - while the game is playing ((score and remaining time)) will be displayed  -->
+    <div class="scoreAndTimeDisplay hide"> // 
+        <!--this div will be played  while the game is on but initally we will put it hide -->
+        <span id="score"> Score: 0 </span> | Time: <span id="timer">60</span> 
+        <!--this will provide info about the time left and the so far score the player has -->
+    </div>
+
+    <!-- Display 1.2 - this will show the shields, the chances reamining if player makes mistakes  -->
+    <div class="shieldsDisplay hide">
+        <img src="./image/shield.png" alt="Shield" class="shield">
+        <img src="./image/shield.png" alt="Shield" class="shield">
+        <img src="./image/shield.png" alt="Shield" class="shield">
+        <img src="./image/shield.png" alt="Shield" class="shield">
+        <img src="./image/shield.png" alt="Shield" class="shield">
+    </div>
+
+    <!--Display 2 - once the game ends  -->
+    <!--Game over screen, when the player ends the game,either won or lose -->
+    <div class="endGameDisplay hide"> 
+        <p id="result"></p> <!--- here i put the result, if the player lose or won , there will be a message indicting that  -->
+        <button id="playAgainButton">Play Again</button> <!-- button to play the game again --> 
+    </div>
+
+    <!--Display 3 - this is the main game zone where  we gonna draw the entire game and game logic  will happen 
+-->
+    <canvas id="gameZoneDisplay"></canvas>
+
+<!-- adding soundtrack -->
+
+    <script src="./js/gameLogic.js"></script>
+</body>
+</html>

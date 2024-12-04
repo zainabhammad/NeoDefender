@@ -1,0 +1,221 @@
+body {
+    font-family: 'Courier New', Courier, monospace; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: #00ff41;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.endGameDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+  }
+  
+  #result {
+    margin-bottom: 20px; /* Add spacing between the message and the button */
+  }
+  
+  #playAgainButton {
+    margin-top: 10px; /* Add space above the button */
+  }
+  
+button {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #1665c1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+td {
+    padding: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+h2 {
+    font-size: 2em;
+    color: #00FF00;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+    color: #00FF00;
+    line-height: 1.5;
+}
+
+img {
+    margin-top: 10px;
+    border: 2px solid #00FF00;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00FF00;
+}
+
+button.story-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #00FF00;
+    color: black;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+button.story-btn:hover {
+    background-color: #009900;
+}
+
+#startgame-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+#startgame-page h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    font-family: "Courier New", Courier, monospace;
+    text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 15px #00FF00;
+}
+
+#startgame-btn {
+    background-color: #00FF00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    color: black;
+    transition: background-color 0.3s;
+}
+
+#startgame-btn:hover {
+    background-color: #00cc00;
+}
+
+#story-page {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    color: #00ff00;
+}
+
+.story {
+    display: none;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 3px solid #00FF00;
+    box-shadow: 0 0 20px 5px rgba(0, 255, 0, 0.5);
+}
+
+.story:first-of-type {
+    display: block;
+}
+
+
+.gameZoneDisplay {
+    border: 2px solid #00ff41;
+    display: block;
+    background: radial-gradient(circle, #000000, #001a0f);
+}
+
+.startgame-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #00ff41;
+    z-index: 10;
+}
+
+.hide {
+    display: none;
+}
+
+#start-button {
+    background-color: #00ff41;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    border-radius: 5px;
+}
+
+.scoreAndTimeDisplay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #00ff41;
+    border-radius: 5px;
+}
+
+.shieldsDisplay {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    display: flex;
+    gap: 0.5em;
+}
+
+.shield {
+    width: 40px;
+    height: 40px;
+}

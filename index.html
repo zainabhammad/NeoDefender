@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoDefender</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+     <div id="startgame-page">
+        <h1>NeoDefender</h1>
+        <button id="startgame-btn">Start Game</button>
+    </div>
+
+    <div id="story-page">
+        <div class="story" id="s1">
+            <h1>Wake up, Neo</h1>
+            <p>You’ve been awakened, chosen to decide the fate of humanity in the war between man and machine.</p>
+            <button class="story-btn" data-next="s2">What choice do you have?</button>
+        </div>
+
+        <div class="story" id="s2">
+            <h1>Your Choice</h1>
+            <table>
+                <tr>
+                    <td>
+                        <h2>Red Pill</h2>
+                        <p>Represents safe, essential data that sustains the system. It is harmless and vital to the balance of the Matrix. Your mission: protect this truth, allowing it to flow freely and keeping the system intact.</p>
+                        <img src="./image/red-pill.png" alt="Red Pill" style="width: 150px; height: 150px;">
+                    </td>
+                    <td>
+                        <h2>Blue Pill</h2>
+                        <p>The Blue Pill: Represents the virus—malevolent, corrupting data sent by the machines. Symbolizes illusion and ignorance, destabilizing the Matrix. Your duty: block this destructive force before it brings chaos and collapse.</p>
+                        <img src="./image/blue-pill.png" alt="Blue Pill" style="width: 150px; height: 150px;">
+                    </td>
+                </tr>
+            </table>
+            <button class="story-btn" data-next="s3">Rules</button>
+        </div>
+
+        <div class="story" id="s3">
+            <h1>System Rules</h1>
+            <table>
+                <tr>
+                    <td>
+                        <h2>System Shields</h2>
+                        <p>Each mistake weakens the system. If your shields deplete, the Matrix falls.</p>
+                    </td>
+                    <td>
+                        <h2>The Clock is Ticking</h2>
+                        <p>The attack intensifies over time. Can you keep up with the growing threat?</p>
+                    </td>
+                </tr>
+            </table>
+            <img src="./image/shield.png" alt="Shield" style="width: 150px; height: 150px;">
+            <button class="story-btn" data-next="s5">Next</button>
+        </div>
+
+        <div class="story" id="s5">
+            <p>The Future of the Matrix is in Your Hands.</p>
+            <button class="startButton" data-next="s1">Are You Ready, Neo?</button>
+          </div>
+        
+         
+    </div>
+
+    <audio id="background-music" >
+        <source src="audio/The Matrix Reloaded OST - Highway Chase Music.mp3" type="audio/mpeg">
+    </audio> 
+
+    
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
